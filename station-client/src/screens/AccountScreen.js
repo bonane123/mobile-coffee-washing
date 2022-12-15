@@ -1,10 +1,15 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React,{ useContext} from "react";
+import { Context } from "../context/AuthContext";
+import CustomButton from "../components/customButton/CustomButton";
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
+  const {signout} = useContext(Context);
+  
   return (
     <View>
-      <Text>AccountScreen</Text>
+      
+      <CustomButton text="Logout" onPress={()=>signout({navigation})}/>
     </View>
   );
 };

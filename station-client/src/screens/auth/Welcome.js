@@ -1,8 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import Background from "../../components/Background";
+import { Context } from "../../context/AuthContext";
 
 const Welcome = ({navigation}) => {
+// const {tryLocalSignin} = useContext(Context);
+// useEffect(()=>{
+//   tryLocalSignin(navigation);
+// }, [])
+
+
   return (
     <Background>
       <View style={styles.container}>
