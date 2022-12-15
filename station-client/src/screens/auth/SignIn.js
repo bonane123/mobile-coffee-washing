@@ -4,8 +4,9 @@ import {
   useWindowDimensions,
   ScrollView,
   View,
+  Text
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from "../../../assets/coffee.png";
 import CustomInput from "../../components/customInput/CustomInput";
@@ -13,6 +14,9 @@ import FormContainer from "../../components/FormContainer";
 import CustomButton from "../../components/customButton/CustomButton";
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Context } from "../../context/AuthContext";
+
+
 
 const icon = [
 <MaterialIcons name="account-circle" size={24} color="black" />,
@@ -22,13 +26,19 @@ const icon = [
 
 
 const SignIn = ({navigation}) => {
+  const {state, signin, tryLocalSignin} = useContext(Context);
+  
+  // useEffect(()=>{
+  //   tryLocalSignin(navigation);
+  // }, [])
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { height } = useWindowDimensions();
 
-  const onSignInPressed = () => {
-    navigation.navigate("Stations");
-  };
+  // const onSignInPressed = () => {
+  //   navigation.navigate("Stations");
+  // };
   const onForgotPasswordPressed = () => {
     // console.warn("onForgotPasswordPress");
     navigation.navigate("forgot");
@@ -62,7 +72,10 @@ const SignIn = ({navigation}) => {
             secureTextEntry={true}
             icon={icon[2]}
           />
-          <CustomButton text="Sign In" onPress={onSignInPressed} />
+          {state.errorMessage ?
+            <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null
+            }
+          <CustomButton text="Sign In" onPress={()=>signin({email, password, navigation})} />
           <CustomButton
             text="Forgot Password?"
             onPress={onForgotPasswordPressed}
@@ -92,6 +105,10 @@ const styles = StyleSheet.create({
     padding: 20,
     height: "100%",
     backgroundColor: "#F9FBFC",
+  },
+  errorMessage: {
+    fontSize: 16,
+    color: "red",
   },
 });
 

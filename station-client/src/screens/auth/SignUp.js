@@ -15,7 +15,12 @@ const icon = [
 ];
 
 const SignUp = ({ navigation }) => {
+  
+  
   const { state, signup } = useContext(AuthContext);
+  const signupFunction = () => {
+
+  };
 
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
@@ -75,7 +80,7 @@ const SignUp = ({ navigation }) => {
           
           <CustomButton
             text="Sign Up"
-            onPress={() => signup({ email, password })}
+            onPress={() => signup({ email, password, navigation })}
           />
           <Text style={styles.text}>
             By registering, you confirm that you accept our{" "}

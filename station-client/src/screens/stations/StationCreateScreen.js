@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
+import Map from "../../components/Map";
 
 const StationCreateScreen = () => {
   return (
     <View>
-      <Text>Create</Text>
+      <Map/>
     </View>
   );
 };
