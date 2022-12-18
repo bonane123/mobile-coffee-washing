@@ -20,7 +20,7 @@ const authReducer = (state, action) => {
 
 const tryLocalSignin = dispatch => async(navigation)=> {
   const token = await AsyncStorage.getItem('token');
-  console.log(token);
+  // console.log(token);
   
   if (token){
     dispatch({type: 'signin', payload: token})
@@ -57,7 +57,7 @@ const signin = (dispatch) => {
       if (response.data.token) {
         navigation.navigate("Stations");
       }
-      console.log(response.data.token);
+      // console.log(response.data.token);
     } catch (error) {
       dispatch({
         type: "add_error",

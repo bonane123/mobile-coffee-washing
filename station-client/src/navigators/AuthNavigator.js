@@ -15,7 +15,9 @@ const AuthStack = createNativeStackNavigator();
 const AuthNavigator = () => {
 
   return (
-    <AuthStack.Navigator initialRouteName="resolve" >
+    <AuthStack.Navigator initialRouteName="resolve" 
+   
+    >
       <AuthStack.Screen name="welcome" options={ {headerShown: false}} component={Welcome} />
       <AuthStack.Screen name="resolve" options={ {headerShown: false}} component={ResolveScreen} />
       <AuthStack.Screen name="signin" component={SignIn} />
